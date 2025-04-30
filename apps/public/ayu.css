@@ -1,10 +1,11 @@
 /* Ayu color scheme: https://github.com/ayu-theme */
+/* customized for use in jbgreenh/marimo-apps-notebooks */
 
 /* Font and Radius Variables */
 :root {
   --monospace-font: var(--marimo-monospace-font, "Fira Mono", monospace);
   --text-font: var(--marimo-text-font, "PT Sans", sans-serif);
-  --heading-font: var(--marimo-heading-font, "Lora", serif);
+  --heading-font: var(--marimo-heading-font, "Lora", san-serif);
   --radius: 8px;
 }
 
