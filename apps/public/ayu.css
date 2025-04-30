@@ -108,7 +108,7 @@ h4 {
 }
 
 /* hide some elements */
-[role="menuitem"]:has(text:contains("Download as")) {
+[id*="notebook-action-download"] {
   display: none !important;
 }
 
