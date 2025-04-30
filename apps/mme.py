@@ -14,6 +14,7 @@ app = marimo.App(width="compact", css_file='public/ayu.css')
 
 with app.setup:
     import marimo as mo
+    import csv
     import requests
 
 
@@ -25,7 +26,8 @@ def _():
 @app.cell
 def _():
     with requests.get(str(mo.notebook_location() / 'public' / 'conversion_factors.csv'), 'r') as cf:
-        conversion_factors = {row[0]: float(row[1]) for row in cf.text.splitlines()}
+        reader = csv.reader(cf.text.splitlines())
+        conversion_factors = {row[0]: float(row[1]) for row in reader}
 
     opi_drop = mo.ui.dropdown(options=conversion_factors.keys(), value='Codeine', label='Drug')
     strength = mo.ui.number(start=0, value=50, label='Strength/Unit')
