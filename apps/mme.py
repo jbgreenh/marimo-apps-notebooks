@@ -20,7 +20,7 @@ with app.setup:
 
 @app.cell
 def _():
-    mo.md('# MME Calculator')
+    mo.Html('<h1>MME Calculator</h1>')
     return
 
 @app.cell
