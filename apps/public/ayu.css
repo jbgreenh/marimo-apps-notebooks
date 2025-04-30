@@ -108,13 +108,9 @@ h4 {
 }
 
 /* hide some elements */
-[role="menuitem"] span:contains("Download") {
+[role="menuitem"]:has(text:contains("Download as")) {
   display: none !important;
 }
-
-/* [role="menuitem"]:has(.lucide-image) { */
-/*   display: none !important; */
-/* } */
 
 .fixed.bottom-0.right-0.z-50 {
   display: none !important;
