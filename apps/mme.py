@@ -46,8 +46,10 @@ def _():
 
 @app.cell
 def _(mme):
-    if mme >= 90:
+    if mme >= 120:
         call_kind = 'alert'
+    elif mme >= 90:
+        call_kind = 'warn'
     else:
         call_kind = 'info'
     mo.callout(f'Calculated daily MME value: {mme}', kind=call_kind)
