@@ -24,7 +24,7 @@ def _():
 
 @app.cell
 def _():
-    with open('public/conversion_factors.csv', 'r') as cf:
+    with open(str(mo.notebook_location() / 'public' / 'conversion_factors.csv'), 'r') as cf:
         reader = csv.reader(cf)
         conversion_factors = {row[0]: float(row[1]) for row in reader}
 
