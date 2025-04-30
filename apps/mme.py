@@ -10,7 +10,7 @@
 import marimo
 
 __generated_with = "0.13.2"
-app = marimo.App(width="compact", css_file=str(mo.notebook_location() / 'public' / 'ayu.css'))
+app = marimo.App(width="compact", css_file=str('public/ayu.css'))
 
 with app.setup:
     import marimo as mo
