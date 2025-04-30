@@ -4,8 +4,16 @@
 /* Font and Radius Variables */
 :root {
   --monospace-font: var(--marimo-monospace-font, "Fira Mono", monospace);
-  --text-font: var(--marimo-text-font, "PT Sans", sans-serif);
-  --heading-font: var(--marimo-heading-font, "PT Sans Caption", san-serif);
+  --text-font: var(
+    --marimo-text-font,
+    "Source Sans 3 ExtraLight 200",
+    sans-serif
+  );
+  --heading-font: var(
+    --marimo-heading-font,
+    "Source Sans 3 ExtraBold 800",
+    san-serif
+  );
   --radius: 8px;
 }
 
