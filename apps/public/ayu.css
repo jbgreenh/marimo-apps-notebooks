@@ -108,9 +108,14 @@ h4 {
 }
 
 /* hide some elements */
-[role="menuitem"]:has(:contains("Download as")) {
+[role="menuitem"]:has(.lucide-file-text) {
   display: none !important;
 }
+
+[role="menuitem"]:has(.lucide-image) {
+  display: none !important;
+}
+
 .fixed.bottom-0.right-0.z-50 {
   display: none !important;
 }
