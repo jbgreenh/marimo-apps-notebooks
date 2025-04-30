@@ -108,10 +108,17 @@ h4 {
 }
 
 /* hide some elements */
+/* hide downloads */
 [id*="notebook-action-download"] {
   display: none !important;
 }
 
+/* hide made with marimo */
 .fixed.bottom-0.right-0.z-50 {
+  display: none !important;
+}
+
+/* hide floating outline */
+.fixed.top-\[25vh\].right-8.z-\[10000\] {
   display: none !important;
 }
