@@ -62,7 +62,7 @@ def _(conversion_factors, days_supply, opi_drop, quantity, strength):
     *MME = strength * (quantity / days_supply) * conversion factor*[^1]  
 
     `{opi_drop.value}` conversion factor: `{drug_cf}`
-    <h4>**{mme}** = {strength.value} * ({quantity.value} / {days_supply.value}) * {drug_cf}</h4>  
+    <h4>{mme} = {strength.value} * ({quantity.value} / {days_supply.value}) * {drug_cf}</h4>  
 
     [^1]: [Conversion Factors from CDC Prescribing Guidelines](https://www.cdc.gov/mmwr/volumes/71/rr/rr7103a1.htm#T1_down)
     """)
