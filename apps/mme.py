@@ -67,6 +67,5 @@ def _(conversion_factors, days_supply, opi_drop, quantity, strength):
     """)
     return (mme,)
 
-
 if __name__ == "__main__":
     app.run()
