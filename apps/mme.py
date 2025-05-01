@@ -61,7 +61,7 @@ def _(conversion_factors, days_supply, opi_drop, quantity, strength):
     mme = round(float(strength.value) * (float(quantity.value) / float(days_supply.value)) * drug_cf, 2)
     mo.md(f"""
     <h3>MME Calculation</h3>  
-    *MME = strength * (quantity / days_supply) * conversion factor*[^1]  
+    *MME = strength per unit * (quantity / days_supply) * conversion factor*[^1]  
 
     `{opi_drop.value}` conversion factor: `{drug_cf}`
     <h4>{mme} = {strength.value} * ({quantity.value} / {days_supply.value}) * {drug_cf}</h4>  
