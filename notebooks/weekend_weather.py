@@ -16,7 +16,7 @@
 import marimo
 
 __generated_with = "0.13.2"
-app = marimo.App(width="full")
+app = marimo.App(width="medium")
 
 with app.setup:
     from io import StringIO
