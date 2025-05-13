@@ -66,7 +66,7 @@ def generate_index(all_notebooks: List[str], output_dir: str) -> None:
             )
             for notebook in all_notebooks:
                 notebook_name = notebook.split("/")[-1].replace(".py", "")
-                display_name = notebook_name.replace("_", " ").title()
+                display_name = notebook_name.replace("_", " ")
 
                 f.write(
                     f'      <div class="p-4 border border-gray-200 rounded">\n'
