@@ -25,7 +25,6 @@ with app.setup:
     import marimo as mo
     import plotly.express as px
     import polars as pl
-    mo.md('## weekday weather')
 
 
 
@@ -40,6 +39,8 @@ def _(drop, drop_units):
         'User-Agent': 'phx weekend temps notebook'
     }
     response = requests.get(url, headers=headers)
+
+    mo.md('## weekday weather')
 
     return (response,)
 
