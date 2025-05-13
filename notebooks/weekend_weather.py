@@ -68,9 +68,9 @@ def _():
     drop_units = mo.ui.dropdown(['F', 'C'], value='F')
     mo.md(f"""
     select a start year:  
-          {drop}
-    F or C?
-          {drop_units}
+          {drop}  
+    F or C?  
+          {drop_units}  
     """)
     return (drop, drop_units)
 
