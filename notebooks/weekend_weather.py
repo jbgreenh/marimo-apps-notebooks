@@ -44,7 +44,7 @@ def _(drop, drop_units):
 
 
 @app.cell
-def _(response):
+def _(response, drop_units):
     lf = (
         pl.scan_csv(StringIO(response.text))
         .select(
@@ -59,7 +59,7 @@ def _(response):
         .agg(pl.col(f'max_temp_{drop_units.value}').mean().alias(f'avg_max_temp_{drop_units.value}'))
     )
     df = lf.collect()
-    df
+    df.glimpse()
     return (df,)
 
 @app.cell
@@ -75,7 +75,7 @@ def _():
     return (drop, drop_units)
 
 @app.cell
-def _(df):
+def _(df, drop_units):
     fig = px.line(df, x='DATE', y=f'avg_max_temp_{drop_units.value}', color='weekday', title='weekend weather')
     fig.update_xaxes(
         tickformat='%b\n%Y'
