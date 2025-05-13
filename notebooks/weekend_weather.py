@@ -30,10 +30,11 @@ with app.setup:
 
 
 @app.cell
-def _(drop):
+def _(drop, drop_units):
+    units = 'metric' if drop_units.value == 'C' else 'standard'
     start_date = f'{drop.value}-01-01T00:00:00-07:00'
     end_date = '2025-05-14T00:00:00-07:00'
-    url = f'https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00023183&startDate={start_date}&endDate={end_date}&dataTypes=TMAX,TMIN,TAVG&format=csv&units=standard'
+    url = f'https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00023183&startDate={start_date}&endDate={end_date}&dataTypes=TMAX,TMIN,TAVG&format=csv&units={units}'
     headers = {
         'User-Agent': 'phx weekend temps notebook'
     }
@@ -51,11 +52,11 @@ def _(response):
             pl.when(pl.col('DATE').str.to_date('%Y-%m-%d').dt.weekday().is_in([1,2,3,4,5]))
                 .then(pl.lit('weekday'))
                 .otherwise(pl.lit('weekend')).alias('weekday'),
-            pl.col('TMAX').alias('max_temp_f')
+            pl.col('TMAX').alias(f'max_temp_{drop_units.value}')
         )
         .sort('DATE')
         .group_by_dynamic('DATE', every='1mo', group_by='weekday')
-        .agg(pl.col('max_temp_f').mean().alias('avg_max_temp_f'))
+        .agg(pl.col(f'max_temp_{drop_units.value}').mean().alias(f'avg_max_temp_{drop_units.value}'))
     )
     df = lf.collect()
     df
@@ -64,15 +65,18 @@ def _(response):
 @app.cell
 def _():
     drop = mo.ui.dropdown(range(2000,2025), value=2022)
+    drop_units = mo.ui.dropdown(['F', 'C'], value='F')
     mo.md(f"""
     select a start year:  
           {drop}
+    F or C?
+          {drop_units}
     """)
-    return (drop,)
+    return (drop, drop_units)
 
 @app.cell
 def _(df):
-    fig = px.line(df, x='DATE', y='avg_max_temp_f', color='weekday', title='weekend weather')
+    fig = px.line(df, x='DATE', y=f'avg_max_temp_{drop_units.value}', color='weekday', title='weekend weather')
     fig.update_xaxes(
         tickformat='%b\n%Y'
     )
