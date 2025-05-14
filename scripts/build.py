@@ -53,12 +53,12 @@ def generate_index(all_notebooks: list[str], output_dir: str) -> None:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>marimo</title>
+    <title>notebooks</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   </head>
   <body class="font-sans max-w-2xl mx-auto p-8 leading-relaxed">
     <div class="mb-8">
-      <img src="https://raw.githubusercontent.com/marimo-team/marimo/main/docs/_static/marimo-logotype-thick.svg" alt="marimo" class="h-20" />
+      <h2>data visualisation example apps and notebooks</h2>
     </div>
     <div class="grid gap-4">
 """
@@ -71,7 +71,7 @@ def generate_index(all_notebooks: list[str], output_dir: str) -> None:
                     f'      <div class="p-4 border border-gray-200 rounded">\n'
                     f'        <h3 class="text-lg font-semibold mb-2">{display_name}</h3>\n'
                     f'        <div class="flex gap-2">\n'
-                    f'          <a href="{notebook.replace(".py", ".html")}" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded">Open Notebook</a>\n'
+                    f'          <a href="{notebook.replace(".py", ".html")}" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded">open notebook</a>\n'
                     f"        </div>\n"
                     f"      </div>\n"
                 )
