@@ -3,7 +3,6 @@
 import os
 import subprocess
 import argparse
-from typing import List
 from pathlib import Path
 
 
@@ -39,7 +38,7 @@ def export_html_wasm(notebook_path: str, output_dir: str, as_app: bool = False) 
         return False
 
 
-def generate_index(all_notebooks: List[str], output_dir: str) -> None:
+def generate_index(all_notebooks: list[str], output_dir: str) -> None:
     """Generate the index.html file."""
     print("Generating index.html")
 
@@ -92,7 +91,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    all_notebooks: List[str] = []
+    all_notebooks: list[str] = []
     for directory in ["notebooks", "apps"]:
         dir_path = Path(directory)
         if not dir_path.exists():
