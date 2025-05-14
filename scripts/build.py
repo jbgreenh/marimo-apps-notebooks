@@ -58,7 +58,7 @@ def generate_index(all_notebooks: list[str], output_dir: str) -> None:
   </head>
   <body class="font-sans max-w-2xl mx-auto p-8 leading-relaxed">
     <div class="mb-8">
-      <h1>data visualisation example apps and notebooks</h1>
+      <h1 class="text-lg font-bold">data visualisation example apps and notebooks</h1>
     </div>
     <div class="grid gap-4">
 """
