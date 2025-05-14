@@ -43,7 +43,7 @@ def _(drop, drop_units):
     }
     response = requests.get(url, headers=headers)
 
-    mo.md('## weekday weather')
+    mo.md('## weekend weather')
 
     return (response, today)
 
