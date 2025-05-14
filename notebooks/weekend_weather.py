@@ -19,6 +19,7 @@ __generated_with = "0.13.2"
 app = marimo.App(width="medium")
 
 with app.setup:
+    from datetime import date
     from io import StringIO
     import requests
 
@@ -31,9 +32,11 @@ with app.setup:
 
 @app.cell
 def _(drop, drop_units):
+    today = date.today()
+    today_str = today.strftime('%Y-%m-%d')
     units = 'metric' if drop_units.value == 'C' else 'standard'
     start_date = f'{drop.value}-01-01T00:00:00-07:00'
-    end_date = '2025-05-14T00:00:00-07:00'
+    end_date = f'{today_str}T00:00:00-07:00'
     url = f'https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&stations=USW00023183&startDate={start_date}&endDate={end_date}&dataTypes=TMAX,TMIN,TAVG&format=csv&units={units}'
     headers = {
         'User-Agent': 'phx weekend temps notebook'
@@ -42,7 +45,7 @@ def _(drop, drop_units):
 
     mo.md('## weekday weather')
 
-    return (response,)
+    return (response, today)
 
 
 @app.cell
@@ -65,8 +68,8 @@ def _(response, drop_units):
     return (df,)
 
 @app.cell
-def _():
-    drop = mo.ui.dropdown(range(2000,2025), value=2022)
+def _(today):
+    drop = mo.ui.dropdown(range(2000,2025), value=today.year - 3)
     drop_units = mo.ui.dropdown(['F', 'C'], value='F')
     mo.md(f"""
     select a start year:  
