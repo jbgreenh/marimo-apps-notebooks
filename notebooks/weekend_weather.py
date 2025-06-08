@@ -27,13 +27,15 @@ with app.setup:
     import plotly.express as px
     import polars as pl
 
-
+@app.cell
+def _():
+    today = date.today()
+    today_str = today.strftime('%Y-%m-%d')
+    return (todaay, today_str)
 
 
 @app.cell
-def _(drop, drop_units):
-    today = date.today()
-    today_str = today.strftime('%Y-%m-%d')
+def _(drop, drop_units, today_str):
     units = 'metric' if drop_units.value == 'C' else 'standard'
     start_date = f'{drop.value}-01-01T00:00:00-07:00'
     end_date = f'{today_str}T00:00:00-07:00'
@@ -45,7 +47,7 @@ def _(drop, drop_units):
 
     mo.md('## weekend weather')
 
-    return (response, today)
+    return (response)
 
 
 @app.cell
